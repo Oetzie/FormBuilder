@@ -1,0 +1,1 @@
+<option value="{$value}" {!empty($selected) ? 'selected="selected"' : ''}>{$label}</option>

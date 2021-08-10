@@ -1,0 +1,79 @@
+/* Should be moved to default theme. */
+.x-menu-item-icon {
+    left: 7px !important;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    text-align: center !important;
+}
+
+/* Should be moved to default theme. */
+.x-btn-text .icon,
+.x-grid3 .icon,
+.x-combo-list-item .icon {
+    margin-right: 8px;
+}
+
+#modx-action-buttons .x-btn-branding {
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #555555 !important;
+}
+
+.panel-desc.modx-config-info,
+.panel-desc.modx-config-error {
+    margin: 0 !important;
+    padding: 15px 0 0 !important;
+    background: none !important;
+}
+
+.panel-desc.modx-config-info .x-panel-bwrap,
+.panel-desc.modx-config-error .x-panel-bwrap {
+    padding-top: 10px !important;
+}
+
+.panel-desc.modx-config-info .x-panel-bwrap {
+    color: #999999;
+    font-style: italic;
+    padding: 0 !important;
+}
+
+.panel-desc.modx-config-error .x-panel-bwrap {
+    color: #856404;
+    padding: 12px 20px !important;
+    background: #fff3cd !important;
+    border: 1px solid #ffeeba;
+    border-radius: 3px;
+}
+
+.modx-config-info code {
+    font-style: italic;
+}
+
+#formbuilder-panel-form-placeholders.panel-desc.modx-config-info,
+#formbuilder-panel-form-placeholders.panel-desc.modx-config-error {
+    padding: 0 !important;
+}
+
+.x-formbuilder-form h3 {
+    margin: 0 0 15px;
+    font-size: 18px !important;
+}
+
+.x-form-builder-field-types .x-form-field {
+    margin: 0 0 8px;
+}
+
+.x-form-builder-field-types .x-form-field .x-btn {
+    display: block;
+}
+
+.x-combo-list-item i {
+    white-space: normal;
+    font-size: 12px;
+}
+
+.x-window .vertical-tabs-panel .x-tab-panel-bwrap .vertical-tabs-body {
+    min-height: 100px;
+    padding: 0 15px 15px;
+}

@@ -1,0 +1,54 @@
+{
+    "name": "FormBuilder",
+    "lowCaseName": "formbuilder",
+    "description": "A form builder solution for MODX Revolution.",
+    "author": "Oetzie.nl",
+    "version": "1.0.0-pl",
+    "package":{
+        "menus": [{
+            "text": "formbuilder",
+            "description": "formbuilder.desc",
+            "parent": "components",
+            "action": "home",
+            "permissions": "formbuilder"
+        }],
+        "elements": {
+            "snippets": [{
+                "name": "FormBuilderForm",
+                "file": "formbuilderform.snippet.php"
+            }, {
+                "name": "FormBuilderFormRender",
+                "file": "formbuilderformrender.snippet.php"
+            }]
+        },
+        "systemSettings": [{
+            "key": "branding_url",
+            "value": "//www.oetzie.nl",
+            "area": "formbuilder"
+        },{
+            "key": "branding_url_help",
+            "value": "//www.oetzie.nl",
+            "area": "formbuilder"
+        },{
+            "key": "email_from_regex",
+            "value": "^(([a-zA-Z0-9_\\+\\.\\-]+)@(sterc\\.nl|oetzie\\.nl){1,25})$",
+            "area": "formbuilder"
+        },{
+            "key": "tinymce_config",
+            "value": "{}",
+            "area": "formbuilder"
+        }]
+    },
+    "build":{
+        "readme": "docs/readme.txt",
+        "license": "docs/license.txt",
+        "changelog": "docs/changelog.txt",
+        "resolver": {
+            "after": [
+                "tables.resolver.php",
+                "permissions.resolver.php",
+                "tablevalues.resolver.php"
+            ]
+        }
+    }
+}
