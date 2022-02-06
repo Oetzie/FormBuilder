@@ -59,7 +59,8 @@ FormBuilder.panel.Form = function(config) {
                                 dateFormat  : MODx.config.manager_date_format,
                                 timeFormat  : MODx.config.manager_time_format,
                                 startDay    : parseInt(MODx.config.manager_week_start),
-                                offset_time : MODx.config.server_offset_time
+                                offset_time : MODx.config.server_offset_time,
+                                allowBlank  : true
                             }, {
                                 xtype       : MODx.expandHelp ? 'label' : 'hidden',
                                 html        : _('formbuilder.label_form_active_from_desc'),
@@ -150,7 +151,8 @@ FormBuilder.panel.Form = function(config) {
                                 dateFormat  : MODx.config.manager_date_format,
                                 timeFormat  : MODx.config.manager_time_format,
                                 startDay    : parseInt(MODx.config.manager_week_start),
-                                offset_time : MODx.config.server_offset_time
+                                offset_time : MODx.config.server_offset_time,
+                                allowBlank  : true
                             }, {
                                 xtype       : MODx.expandHelp ? 'label' : 'hidden',
                                 html        : _('formbuilder.label_form_active_till_desc'),

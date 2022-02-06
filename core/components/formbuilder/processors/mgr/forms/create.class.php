@@ -57,6 +57,24 @@ class FormBuilderFormCreateProcessor extends modObjectCreateProcessor
 
         return parent::beforeSet();
     }
+
+    /**
+     * @access public.
+     * @return Mixed.
+     */
+    public function beforeSave()
+    {
+        $criteria = [
+            'id:!=' => $this->object->get('id'),
+            'name'  => $this->object->get('name')
+        ];
+
+        if ($this->doesAlreadyExist($criteria)) {
+            $this->addFieldError('name', $this->modx->lexicon('formbuilder.form_error_exists'));
+        }
+
+        return parent::beforeSave();
+    }
 }
 
 return 'FormBuilderFormCreateProcessor';

@@ -50,9 +50,10 @@ class FormBuilder
             'css_url'               => $assetsUrl . 'css/',
             'assets_url'            => $assetsUrl,
             'connector_url'         => $assetsUrl . 'connector.php',
-            'version'               => '1.0.0',
+            'version'               => '1.0.1',
             'branding_url'          => $this->modx->getOption('formbuilder.branding_url', null, ''),
             'branding_help_url'     => $this->modx->getOption('formbuilder.branding_url_help', null, ''),
+            'use_pdotools'          => (bool) $this->modx->getOption('form.use_pdotools', null, false),
             'has_permission'        => (bool) $this->modx->hasPermission('formbuilder_admin'),
             'tinymce_config'        => json_decode($this->modx->getOption('formbuilder.tinymce_config', null, '{}'), true),
             'media_source'          => $this->modx->getOption('form.media_source', null, $this->modx->getOption('default_media_source')),
@@ -120,24 +121,12 @@ class FormBuilder
      * @access public.
      * @param String $name.
      * @param Array $properties.
-     * @param Boolean $usePdoTools.
-     * @param Boolean $usePdoElementsPath.
      * @return String.
      */
-    public function getChunkTemplate($name, array $properties = [], $usePdoTools = true, $usePdoElementsPath = true)
+    public function getChunk($name, array $properties = [])
     {
-        if ($usePdoTools && $pdo = $this->modx->getService('pdoTools')) {
-            if ($usePdoElementsPath) {
-                $properties = array_merge([
-                    'elementsPath' => $this->config['core_path']
-                ], $properties);
-            } else {
-                $properties = array_merge([
-                    'elementsPath' => $this->modx->getOption('pdotools_elements_path')
-                ], $properties);
-            }
-
-            return $pdo->getChunk($name, $properties);
+        if ($this->config['use_pdotools'] && $pdoTools = $this->modx->getService('pdoTools')) {
+            return $pdoTools->getChunk($name, $properties);
         }
 
         $type = 'CHUNK';
@@ -149,11 +138,7 @@ class FormBuilder
 
         switch (strtoupper($type)) {
             case 'FILE':
-                if (false !== strrpos($name, '.')) {
-                    $name = $this->config['core_path'] . $name;
-                } else {
-                    $name = $this->config['core_path'] . $name . '.chunk.tpl';
-                }
+                $name = $this->config['core_path'] . $name;
 
                 if (file_exists($name)) {
                     $chunk = $this->modx->newObject('modChunk', [

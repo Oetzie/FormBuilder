@@ -3,7 +3,7 @@
     "lowCaseName": "formbuilder",
     "description": "A form builder solution for MODX Revolution.",
     "author": "Oetzie.nl",
-    "version": "1.0.0-pl",
+    "version": "1.0.1-pl",
     "package":{
         "menus": [{
             "text": "formbuilder",
@@ -45,6 +45,7 @@
         "changelog": "docs/changelog.txt",
         "resolver": {
             "after": [
+                "extras.resolver.php",
                 "tables.resolver.php",
                 "permissions.resolver.php",
                 "tablevalues.resolver.php"

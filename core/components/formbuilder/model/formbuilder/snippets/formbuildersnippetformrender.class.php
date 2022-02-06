@@ -28,11 +28,6 @@ class FormBuilderSnippetFormRender extends FormBuilderSnippets
     public function run($event, array $properties = [], $form)
     {
         if (in_array($event, [FormEvents::BEFORE_POST, FormEvents::VALIDATE_POST], true)) {
-            $this->setProperties($this->getFormattedProperties([
-                'usePdoTools'           => $form->getProperty('usePdoTools'),
-                'usePdoElementsPath'    => $form->getProperty('usePdoElementsPath')
-            ]));
-
             $object = $this->getForm($form->getProperty('form'));
 
             if ($object) {
@@ -119,7 +114,7 @@ class FormBuilderSnippetFormRender extends FormBuilderSnippets
                             }
                         }
 
-                        if ($errors = $form->getValidator()->getError($properties['key'])) {
+                        if ($errors = $form->getValidators()->getError($properties['key'])) {
                             $errors = $form->formatValidationError($errors);
 
                             $properties['error']    = $errors[0] ?: '';

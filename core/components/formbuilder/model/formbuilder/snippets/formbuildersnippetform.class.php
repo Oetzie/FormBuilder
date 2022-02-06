@@ -35,10 +35,7 @@ class FormBuilderSnippetForm extends FormBuilderSnippets
         </tr>',
         'tplEmailFieldWrapper'  => '@INLINE <table width="100%" border="0" cellpadding="0" cellspacing="0">
             [[+output]]
-        </table>',
-
-        'usePdoTools'           => false,
-        'usePdoElementsPath'    => false
+        </table>'
     ];
 
     /**

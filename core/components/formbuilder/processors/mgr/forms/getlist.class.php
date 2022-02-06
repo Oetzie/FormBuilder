@@ -80,6 +80,18 @@ class FormBuilderFormGetListProcessor extends modObjectGetListProcessor
     {
         $array = $object->toArray();
 
+        if (in_array($object->get('active_from'), ['-001-11-30 00:00:00', '-1-11-30 00:00:00', '0000-00-00 00:00:00', null], true)) {
+            $array['active_from'] = '';
+        } else {
+            $array['active_from'] = date($this->getProperty('dateFormat'), strtotime($object->get('active_from')));
+        }
+
+        if (in_array($object->get('active_till'), ['-001-11-30 00:00:00', '-1-11-30 00:00:00', '0000-00-00 00:00:00', null], true)) {
+            $array['active_till'] = '';
+        } else {
+            $array['active_till'] = date($this->getProperty('dateFormat'), strtotime($object->get('active_till')));
+        }
+
         if (in_array($object->get('editedon'), ['-001-11-30 00:00:00', '-1-11-30 00:00:00', '0000-00-00 00:00:00', null], true)) {
             $array['editedon'] = '';
         } else {

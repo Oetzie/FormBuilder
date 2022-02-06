@@ -94,6 +94,18 @@ class FormBuilderFormManageManagerController extends FormBuilderManagerControlle
                 'success_resource_formatted' => ''
             ]);
 
+            if (in_array($this->object->get('active_from'), ['-001-11-30 00:00:00', '-1-11-30 00:00:00', '0000-00-00 00:00:00', null], true)) {
+                $array['active_from'] = '';
+            } else {
+                $array['active_from'] = $this->object->get('active_from');
+            }
+
+            if (in_array($this->object->get('active_till'), ['-001-11-30 00:00:00', '-1-11-30 00:00:00', '0000-00-00 00:00:00', null], true)) {
+                $array['active_till'] = '';
+            } else {
+                $array['active_till'] = $this->object->get('active_till');
+            }
+
             if ($resource = $this->object->getSuccessResource()) {
                 $array['success_resource_formatted'] = $resource->get('pagetitle') . ($this->modx->hasPermission('tree_show_resource_ids') ? ' (' . $resource->get('id') . ')' : '');
             }
